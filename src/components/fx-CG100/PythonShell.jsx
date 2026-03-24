@@ -42,7 +42,7 @@ export default function PythonShell() {
 
   return (
     <div className="python-shell">
-      <div className="python-output" onClick={() => {}}>
+      <div className="python-output">
         <pre>{output}</pre>
         <div ref={bottomRef} />
       </div>

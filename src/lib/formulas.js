@@ -1,5 +1,5 @@
 /**
- * formulas.js – 128 built-in engineering / science formulas
+ * formulas.js – built-in engineering / science formulas
  * Each entry: { id, name, category, latex, variables, compute(vars) }
  */
 

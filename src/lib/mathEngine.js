@@ -31,7 +31,6 @@ export function evaluate(expr) {
       .replace(/×/g, '*')
       .replace(/÷/g, '/')
       .replace(/−/g, '-')
-      .replace(/\^/g, '^')
       .replace(/π/g, 'pi')
       .replace(/∞/g, 'Infinity')
       .trim();
@@ -86,7 +85,7 @@ export function evaluate(expr) {
       fact:  factorial,
       mod:   (a, b) => a % b,
       gcd:   (a, b) => { while(b){ let t=b; b=a%b; a=t; } return Math.abs(a); },
-      lcm:   (a, b) => Math.abs(a*b) / gcd(a,b),
+      lcm:   (a, b) => Math.abs(a*b) / (function gcdInner(x,y){ while(y){ const t=y; y=x%y; x=t; } return Math.abs(x); })(a,b),
       max:   (...a) => Math.max(...a),
       min:   (...a) => Math.min(...a),
     };

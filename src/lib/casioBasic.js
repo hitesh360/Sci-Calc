@@ -130,16 +130,14 @@ export function runProgram(code, onOutput, onInput) {
           if (pc < lines.length && /^Then/i.test(lines[pc])) {
             pc++; // consume Then
             if (!cond) {
-              // Skip to Else or IfEnd
+              // Skip to Else or IfEnd; only IfEnd closes a nested If
               let depth = 1;
               while (pc < lines.length && depth > 0) {
                 const l = lines[pc];
                 if (/^If\b/i.test(l)) depth++;
-                else if (/^IfEnd$/i.test(l) || /^Else$/i.test(l)) depth--;
+                else if (/^IfEnd$/i.test(l)) depth--;
+                else if (/^Else$/i.test(l) && depth === 1) { pc++; break; }
                 pc++;
-              }
-              if (/^Else$/i.test(lines[pc - 1])) {
-                // continue executing Else block
               }
             }
           } else {

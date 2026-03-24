@@ -40,7 +40,6 @@ function exprToLatex(expr) {
     .replace(/\*/g, '\\times ')
     .replace(/\//g, '\\div ')
     .replace(/sqrt\(([^)]*)\)/g, '\\sqrt{$1}')
-    .replace(/\^/g, '^')
     .replace(/π/g, '\\pi ')
     .replace(/×/g, '\\times ')
     .replace(/÷/g, '\\div ');
@@ -62,5 +61,5 @@ function escapeLatex(str) {
   if (sci) {
     return `${sci[1]}\\times10^{${sci[2]}}`;
   }
-  return str.replace(/[_^]/g, '\\$&');
+  return str.replace(/\\/g, '\\\\').replace(/[_^]/g, '\\$&');
 }
