@@ -1,0 +1,263 @@
+/* ══════════════════════════════════════════════════════
+   fx-CG100 Calculator Body
+   ══════════════════════════════════════════════════════ */
+
+.cg100-body {
+  width: 320px;
+  background: linear-gradient(170deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-radius: 18px 18px 24px 24px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.08);
+  padding: 10px 12px 20px;
+  position: relative;
+  user-select: none;
+}
+
+/* Speaker grille */
+.cg100-speaker {
+  height: 6px;
+  margin: 0 30% 8px;
+  background: repeating-linear-gradient(
+    90deg, #444 0px, #444 2px, transparent 2px, transparent 5px
+  );
+  border-radius: 3px;
+  opacity: 0.5;
+}
+
+/* Screen bezel */
+.cg100-screen-bezel {
+  background: #000;
+  border-radius: 6px;
+  padding: 4px;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,.9), 0 0 0 2px #111;
+  margin-bottom: 6px;
+}
+
+/* Status bar */
+.cg100-status-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 8px;
+  font-size: 10px;
+  color: #888;
+  font-family: 'Courier New', monospace;
+}
+
+.cg100-model-label {
+  font-size: 9px;
+  color: #555;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Bottom strip */
+.cg100-bottom-strip {
+  height: 8px;
+  background: linear-gradient(90deg, #ff6600, #ff9900);
+  border-radius: 0 0 12px 12px;
+  margin: 12px -12px -20px;
+}
+
+/* ══ Keypad layout ══ */
+.cg100-keypad {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px 0 8px;
+}
+
+.cg100-key-row {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+/* Base key */
+.cg100-key {
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  min-width: 34px;
+  padding: 0 4px;
+  flex: 1;
+  max-width: 42px;
+  position: relative;
+  transition: filter 0.08s, transform 0.08s;
+  box-shadow: 0 3px 0 rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.12);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  line-height: 1;
+}
+
+.cg100-key:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0,0,0,.5);
+  filter: brightness(1.2);
+}
+
+/* Key color variants */
+.key-gray   { background: #3d3d3d; color: #e8e8e8; }
+.key-dark   { background: #282828; color: #ccc; }
+.key-shift  { background: #e67e00; color: #fff; }
+.key-alpha  { background: #c0392b; color: #fff; }
+.key-exe    { background: #e6a800; color: #1a1a1a; font-size: 12px; font-weight: 800; }
+.key-ac     { background: #555; color: #ff6644; font-weight: 800; }
+.key-del    { background: #444; color: #ff9944; }
+.key-nav    { background: #333; color: #aaa; font-size: 14px; }
+.key-func   { background: #2a5a8a; color: #9cd; font-size: 10px; }
+.key-number { background: #3d3d3d; color: #fff; font-size: 13px; font-weight: 700; }
+.key-zero   { min-width: 74px; max-width: 74px; flex: none; }
+.key-op     { background: #1a3a5a; color: #7af; font-size: 14px; }
+
+/* Shift/Alpha secondary labels */
+.key-top-label {
+  font-size: 7px;
+  color: #f90;
+  letter-spacing: 0.3px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.key-alpha-label {
+  font-size: 7px;
+  color: #f66;
+  letter-spacing: 0.3px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.key-main {
+  font-size: inherit;
+}
+
+/* Navigation cluster */
+.nav-cluster {
+  display: grid;
+  grid-template-columns: 34px 34px 34px;
+  grid-template-rows: 34px 34px 34px;
+  gap: 3px;
+}
+
+.nav-up    { grid-column: 2; grid-row: 1; }
+.nav-left  { grid-column: 1; grid-row: 2; }
+.nav-ok    { grid-column: 2; grid-row: 2; }
+.nav-right { grid-column: 3; grid-row: 2; }
+.nav-down  { grid-column: 2; grid-row: 3; }
+
+/* Function key row */
+.fn-row {
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+}
+
+/* Screen display */
+.cg100-screen {
+  background: #0d1117;
+  border-radius: 4px;
+  min-height: 160px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Courier New', monospace;
+}
+
+.cg100-screen-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #667;
+  margin-bottom: 8px;
+}
+
+.cg100-input-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cg100-expr {
+  color: #8af;
+  font-size: 14px;
+  word-break: break-all;
+  min-height: 20px;
+}
+
+.cg100-expr .cursor {
+  display: inline-block;
+  width: 2px;
+  height: 16px;
+  background: #8af;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+.cg100-result {
+  font-size: 24px;
+  color: #fff;
+  text-align: right;
+  min-height: 30px;
+  font-weight: 300;
+}
+
+.cg100-result.error { color: #ff6644; font-size: 16px; }
+.cg100-result.empty { color: #444; }
+
+/* App Menu */
+.app-menu {
+  background: #0d1117;
+  border-radius: 4px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-menu-title {
+  text-align: center;
+  font-size: 11px;
+  color: #7af;
+  padding: 6px;
+  border-bottom: 1px solid #222;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+}
+
+.app-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  padding: 6px;
+  flex: 1;
+}
+
+.app-menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: #1a2030;
+  border-radius: 5px;
+  border: 1px solid #2a3a50;
+  cursor: pointer;
+  padding: 6px 4px;
+  transition: background 0.15s;
+}
+.app-menu-item:hover, .app-menu-item.active {
+  background: #2a4a80;
+  border-color: #4a8af0;
+}
+
+.app-menu-icon { font-size: 18px; }
+.app-menu-label { font-size: 9px; color: #9cd; font-family: 'Courier New', monospace; letter-spacing: 0.5px; }
