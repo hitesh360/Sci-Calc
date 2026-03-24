@@ -1,0 +1,321 @@
+/* ══════════════════════════════════════════════════════
+   fx-5800P Calculator Body – Dark Purple Signature Skin
+   ══════════════════════════════════════════════════════ */
+
+.fx5800-body {
+  width: 280px;
+  max-width: calc(100vw - 8px);
+  background: linear-gradient(170deg, #1a0a3a 0%, #0e0620 100%);
+  border-radius: 12px 12px 20px 20px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.06);
+  padding: 10px 10px 16px;
+  position: relative;
+  user-select: none;
+  transition: opacity 0.3s;
+  transform-origin: top center;
+}
+
+.cover-toggle {
+  width: 100%;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 6px;
+  color: #998;
+  font-size: 10px;
+  padding: 3px;
+  cursor: pointer;
+  margin-bottom: 6px;
+  /* Touch friendly */
+  min-height: 36px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.cover-toggle:hover { background: rgba(255,255,255,.12); }
+
+.cover-closed {
+  height: 60px;
+  overflow: hidden;
+  opacity: 0.7;
+}
+
+/* Model badge */
+.fx5800-model-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.fx5800-model-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #c8a0f0;
+  letter-spacing: 2px;
+}
+.fx5800-model-sub {
+  font-size: 8px;
+  color: #665;
+  letter-spacing: 1.5px;
+}
+
+/* Screen bezel */
+.fx5800-screen-bezel {
+  background: #000;
+  border-radius: 5px;
+  padding: 3px;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,.9), 0 0 0 1.5px #2a1a4a;
+  margin-bottom: 6px;
+}
+
+/* Bottom label */
+.fx5800-bottom {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #7a5a9a;
+  letter-spacing: 4px;
+  margin-top: 8px;
+}
+
+/* ── 4-Line Screen ── */
+.fx5800-screen {
+  background: #9aaa80;
+  border-radius: 3px;
+  padding: 6px 8px;
+  font-family: 'Courier New', monospace;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  box-shadow: inset 0 0 6px rgba(0,0,0,.4);
+}
+
+.fx5800-screen-line {
+  font-size: 11px;
+  color: #1a2010;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.fx5800-screen-line.line-input {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.fx5800-screen-line.line-result {
+  font-size: 14px;
+  font-weight: 700;
+  justify-content: flex-end;
+  color: #0a1008;
+}
+
+.fx5800-screen-line.line-error {
+  color: #600;
+  font-size: 11px;
+}
+
+.fx5800-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 11px;
+  background: #1a2010;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* Status row at top */
+.fx5800-status {
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
+  color: #3a4030;
+  letter-spacing: 1px;
+}
+
+/* ── Keypad ── */
+.fx5800-keypad {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fx5800-key-row {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.fx5800-key {
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  min-width: 30px;
+  flex: 1;
+  max-width: 38px;
+  position: relative;
+  transition: filter 0.08s, transform 0.08s;
+  box-shadow: 0 2px 0 rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.1);
+  line-height: 1;
+  /* Mobile: no tap flash, instant feedback */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fx5800-key:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 rgba(0,0,0,.5);
+  filter: brightness(1.3);
+}
+
+.k-white  { background: #ddd; color: #222; }
+.k-lgray  { background: #bbb; color: #111; }
+.k-dgray  { background: #555; color: #eee; }
+.k-shift  { background: #e67e00; color: #fff; }
+.k-alpha  { background: #c0392b; color: #fff; }
+.k-exe    { background: #7a5a9a; color: #fff; font-weight: 800; font-size: 11px; }
+.k-ac     { background: #444; color: #f96; font-weight: 800; }
+.k-del    { background: #444; color: #fa6; }
+.k-prog   { background: #2a1a5a; color: #c9f; font-size: 10px; }
+.k-num    { background: #ccc; color: #111; font-size: 12px; font-weight: 700; }
+.k-op     { background: #aab; color: #112; font-size: 12px; }
+.k-zero   { min-width: 64px; max-width: 64px; flex: none; }
+
+.k-top  { font-size: 7px; color: #f90; height: 9px; }
+.k-alph { font-size: 7px; color: #f64; height: 9px; }
+.k-main { font-size: inherit; }
+
+/* Formula Library */
+.formula-lib {
+  background: #8a9a70;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+  font-family: 'Courier New', monospace;
+}
+
+.formula-lib-title {
+  font-size: 9px;
+  color: #1a2010;
+  padding: 2px 6px;
+  border-bottom: 1px solid #7a8a60;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.formula-lib-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2px 4px;
+}
+
+.formula-lib-item {
+  font-size: 10px;
+  color: #1a2010;
+  padding: 2px 3px;
+  cursor: pointer;
+  border-radius: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.formula-lib-item:hover { background: rgba(0,0,0,.15); }
+
+.formula-cat-label {
+  font-size: 8px;
+  color: #4a5a30;
+  padding: 2px 3px 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Program editor */
+.prog-editor {
+  background: #8a9a70;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+}
+
+.prog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 6px;
+  border-bottom: 1px solid #7a8a60;
+  font-size: 9px;
+  color: #1a2010;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+}
+
+.prog-run-btn, .prog-export-btn {
+  padding: 1px 5px;
+  font-size: 8px;
+  background: #3a5a3a;
+  border: none;
+  border-radius: 2px;
+  color: #9fa;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+}
+.prog-export-btn { background: #3a3a5a; color: #9af; margin-left: 2px; }
+
+.prog-textarea {
+  flex: 1;
+  background: #7a8a60;
+  border: none;
+  resize: none;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: #1a2010;
+  padding: 3px 6px;
+  outline: none;
+  border-radius: 0 0 3px 3px;
+}
+
+.prog-output {
+  background: #8a9a70;
+  border-radius: 3px;
+  padding: 3px 6px;
+  font-size: 10px;
+  font-family: 'Courier New', monospace;
+  color: #1a2010;
+  max-height: 40px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+/* ══ MOBILE RESPONSIVE ══ */
+
+/* fx-5800P is 280px wide – fits most phones. On very narrow screens, tighten gaps */
+@media (max-width: 300px) {
+  .fx5800-body {
+    width: 260px;
+    padding: 8px 6px 12px;
+  }
+
+  .fx5800-key {
+    height: 27px;
+    min-width: 26px;
+    max-width: 34px;
+    font-size: 9px;
+  }
+
+  .k-zero { min-width: 56px; max-width: 56px; }
+  .fx5800-keypad { gap: 3px; }
+  .fx5800-key-row { gap: 3px; }
+}

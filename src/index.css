@@ -1,0 +1,78 @@
+/* ── CSS Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+  /* Prevent pull-to-refresh on iOS while keeping scroll usable */
+  overflow-x: hidden;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+  /* Remove 300ms tap delay on mobile */
+  touch-action: manipulation;
+  /* Remove blue flash on tap (Android Chrome) */
+  -webkit-tap-highlight-color: transparent;
+}
+input  { font-family: inherit; touch-action: manipulation; }
+
+/* ── Theme variables ── */
+:root {
+  --accent:        #f90;
+  --bg-page:       #121212;
+  --bg-toolbar:    #1e1e1e;
+  --bg-card:       #252525;
+  --border:        #333;
+  --text-primary:  #e8e8e8;
+  --text-secondary:#888;
+  --shadow:        0 4px 20px rgba(0,0,0,.5);
+}
+
+[data-theme="dark"] {
+  --accent:        #f90;
+  --bg-page:       #000;
+  --bg-toolbar:    #0a0a0a;
+  --bg-card:       #111;
+  --border:        #222;
+  --text-primary:  #fff;
+  --text-secondary:#666;
+}
+
+[data-theme="high-contrast"] {
+  --accent:        #ff0;
+  --bg-page:       #000;
+  --bg-toolbar:    #000;
+  --bg-card:       #000;
+  --border:        #ff0;
+  --text-primary:  #ff0;
+  --text-secondary:#ff0;
+}
+
+[data-theme="light"] {
+  --accent:        #d97700;
+  --bg-page:       #f0f0f0;
+  --bg-toolbar:    #e0e0e0;
+  --bg-card:       #fff;
+  --border:        #ccc;
+  --text-primary:  #111;
+  --text-secondary:#555;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #444; border-radius: 3px; }
+
+/* ── KaTeX overrides ── */
+.katex { font-size: 1.1em !important; }
+
+/* ── Utilities ── */
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.w-full      { width: 100%; }

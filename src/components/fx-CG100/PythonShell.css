@@ -1,0 +1,57 @@
+.python-shell {
+  background: #0d1117;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  height: 160px;
+}
+
+.python-output {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 8px;
+}
+
+.python-output pre {
+  font-size: 10px;
+  color: #7cf;
+  font-family: 'Courier New', monospace;
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 0;
+}
+
+.python-input-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  border-top: 1px solid #1a2030;
+}
+
+.python-prompt {
+  font-size: 10px;
+  color: #7cf;
+  font-family: 'Courier New', monospace;
+}
+
+.python-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #8af;
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  outline: none;
+}
+
+.python-run-btn {
+  background: #1a4a1a;
+  border: 1px solid #2a8a2a;
+  color: #6f6;
+  border-radius: 3px;
+  padding: 1px 6px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.python-run-btn:hover { background: #2a6a2a; }

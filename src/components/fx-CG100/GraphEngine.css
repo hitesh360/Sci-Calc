@@ -1,0 +1,65 @@
+.graph-engine {
+  background: #0d1117;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px;
+}
+
+.graph-inputs {
+  display: flex;
+  gap: 4px;
+}
+
+.graph-input {
+  flex: 1;
+  background: #1a2030;
+  border: 1px solid #2a4a6a;
+  border-radius: 4px;
+  color: #8af;
+  font-size: 11px;
+  padding: 3px 6px;
+  font-family: 'Courier New', monospace;
+  outline: none;
+}
+
+.graph-input:focus {
+  border-color: #4af;
+}
+
+.graph-canvas {
+  border-radius: 3px;
+  cursor: crosshair;
+  display: block;
+}
+
+.graph-status {
+  font-size: 10px;
+  color: #ff0;
+  font-family: 'Courier New', monospace;
+  min-height: 14px;
+  text-align: center;
+}
+
+.graph-controls {
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+}
+
+.graph-btn {
+  padding: 3px 7px;
+  background: #1a3050;
+  border: 1px solid #2a5a8a;
+  border-radius: 3px;
+  color: #7af;
+  font-size: 10px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+}
+
+.graph-btn:hover {
+  background: #2a5a8a;
+  color: #fff;
+}
