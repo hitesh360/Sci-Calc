@@ -1,7 +1,8 @@
 const CACHE_NAME = 'sci-calc-v1';
+const BASE = '/Sci-Calc';
 const ASSETS = [
-  '/',
-  '/index.html',
+  BASE + '/',
+  BASE + '/index.html',
 ];
 
 self.addEventListener('install', (e) => {
