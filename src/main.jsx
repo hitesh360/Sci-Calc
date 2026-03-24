@@ -4,9 +4,12 @@ import App from './App.jsx';
 import './index.css';
 
 // Register Service Worker for PWA/offline
+// Use import.meta.env.BASE_URL so the path is correct for GitHub Pages (/Sci-Calc/sw.js)
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
+    navigator.serviceWorker
+      .register(import.meta.env.BASE_URL + 'sw.js')
+      .catch(() => {});
   });
 }
 

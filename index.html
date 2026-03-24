@@ -2,10 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- Mobile-first viewport: no scaling, fills the phone screen -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta name="theme-color" content="#1a1a2e" />
-    <meta name="description" content="Casio fx-CG100 & fx-5800P Scientific Calculator Emulator" />
-    <link rel="manifest" href="/manifest.json" />
+    <meta name="description" content="Casio fx-CG100 &amp; fx-5800P Scientific Calculator Emulator – mobile friendly" />
+
+    <!-- PWA / Add to Home Screen -->
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Sci-Calc" />
+
     <title>Sci-Calc – Casio Emulator</title>
   </head>
   <body>

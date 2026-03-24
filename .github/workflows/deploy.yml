@@ -1,0 +1,57 @@
+name: Deploy to GitHub Pages
+
+# Trigger: push to main branch OR manual "Run workflow" button in Actions tab
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Required permissions for GitHub Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one concurrent deployment at a time; cancel queued (not in-progress) runs
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+
+    steps:
+      # 1. Checkout the code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Set up Node.js 20 with npm cache
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # 3. Install dependencies (respects package-lock.json exactly)
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Build the Vite app (outputs to /dist)
+      - name: Build
+        run: npm run build
+
+      # 5. Upload the built /dist folder as a Pages artifact
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      # 6. Deploy the artifact to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4

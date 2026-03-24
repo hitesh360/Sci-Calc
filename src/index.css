@@ -7,10 +7,21 @@ body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   overscroll-behavior: none;
+  /* Prevent pull-to-refresh on iOS while keeping scroll usable */
+  overflow-x: hidden;
 }
 
-button { border: none; outline: none; cursor: pointer; font-family: inherit; }
-input  { font-family: inherit; }
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+  /* Remove 300ms tap delay on mobile */
+  touch-action: manipulation;
+  /* Remove blue flash on tap (Android Chrome) */
+  -webkit-tap-highlight-color: transparent;
+}
+input  { font-family: inherit; touch-action: manipulation; }
 
 /* ── Theme variables ── */
 :root {

@@ -2,11 +2,12 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  /* On mobile, fill available screen height dynamically */
+  min-height: min(300px, 50dvh);
   background: var(--bg-card);
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border);
-  min-height: 300px;
 }
 
 .history-header {
