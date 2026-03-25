@@ -27,7 +27,8 @@ export default function GraphEngine({ expr: initialExpr }) {
   }, []);
 
   const evalY = useCallback((xVal, expression) => {
-    const { value, isError } = evaluate(expression.replace(/x/g, `(${xVal})`));
+    // Use negative lookbehind/lookahead to replace standalone 'x' only (not 'exp', 'max', etc.)
+    const { value, isError } = evaluate(expression.replace(/(?<![a-zA-Z])x(?![a-zA-Z])/g, `(${xVal})`));
     return isError ? null : value;
   }, []);
 
