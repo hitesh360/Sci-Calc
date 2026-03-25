@@ -189,10 +189,14 @@ function toFraction(x) {
   x = Math.abs(x);
   const whole = Math.floor(x);
   const frac = x - whole;
-  if (frac < 1e-9) return null; // it's an integer, no fraction needed
+  // Skip if it's essentially an integer (covers cases like tan(45°) ≈ 0.9999999…)
+  if (frac < 1e-9 || frac > 1 - 1e-9) return null;
 
   for (let d = 2; d <= MAX_DENOM; d++) {
     const n = Math.round(frac * d);
+    // Skip degenerate fractions where numerator equals denominator (= integer)
+    if (n === d) continue;
+    if (n === 0) continue;
     if (Math.abs(frac - n / d) < 1e-9) {
       if (whole > 0) return `${sign}${whole} ${n}/${d}`;
       return `${sign}${n}/${d}`;
