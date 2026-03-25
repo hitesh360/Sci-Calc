@@ -33,8 +33,8 @@ export function evaluate(expr) {
       .replace(/−/g, '-')
       .replace(/π/g, 'pi')
       .replace(/∞/g, 'Infinity')
-      // % as percentage: replace only when attached to a number or closing paren
-      .replace(/([\d)])\s*%/g, '$1/100')
+      // % as percentage: replace only when attached to a number, closing paren, or constant name
+      .replace(/([\d)a-z])\s*%/gi, '$1/100')
       .trim();
 
     // Wrap trig functions to convert angles

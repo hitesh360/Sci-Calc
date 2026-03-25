@@ -4,12 +4,23 @@ import App from './App.jsx';
 import './index.css';
 
 // Register Service Worker for PWA/offline
-// Use import.meta.env.BASE_URL so the path is correct for GitHub Pages (/Sci-Calc/sw.js)
+// updateViaCache:'none' ensures the browser ALWAYS fetches a fresh sw.js from the
+// network when checking for updates (ignores HTTP cache), preventing stale SW issues.
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register(import.meta.env.BASE_URL + 'sw.js')
+      .register(import.meta.env.BASE_URL + 'sw.js', { updateViaCache: 'none' })
       .catch(() => {});
+
+    // When a new service worker takes over (after skipWaiting + clients.claim),
+    // reload the page so users always get the freshest version of the app.
+    let reloading = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!reloading) {
+        reloading = true;
+        window.location.reload();
+      }
+    });
   });
 }
 
