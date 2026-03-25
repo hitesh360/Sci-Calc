@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sci-calc-v2';
+const CACHE_NAME = 'sci-calc-v3';
 const BASE = '/Sci-Calc';
 const ASSETS = [
   BASE + '/',

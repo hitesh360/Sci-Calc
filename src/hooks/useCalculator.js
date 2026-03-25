@@ -45,6 +45,20 @@ export function useCalculator({ addToHistory }) {
         setInput(prev => prev.slice(0, -1));
         return;
 
+      // ← behaves like DEL (backspace) on fx-5800P
+      case '←':
+        setInput(prev => prev.slice(0, -1));
+        return;
+
+      // Keys that have no expression effect in emulator
+      case 'S⇔D':
+      case 'M+':
+      case '→':
+      case 'F1': case 'F2': case 'F3': case 'F4': case 'F5': case 'F6':
+      case 'OPTN': case 'VARS': case 'SETUP': case 'PRGM':
+      case '▲': case '▼': case '◀': case '▶':
+        return;
+
       case 'EXE': {
         // Read current input from ref to avoid side effects inside an updater
         const expr = inputRef.current;

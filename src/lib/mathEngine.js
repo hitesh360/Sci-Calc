@@ -33,6 +33,8 @@ export function evaluate(expr) {
       .replace(/−/g, '-')
       .replace(/π/g, 'pi')
       .replace(/∞/g, 'Infinity')
+      // % as percentage: replace only when attached to a number or closing paren
+      .replace(/([\d)])\s*%/g, '$1/100')
       .trim();
 
     // Wrap trig functions to convert angles
@@ -86,6 +88,7 @@ export function evaluate(expr) {
       mod:   (a, b) => a % b,
       gcd:   (a, b) => { while(b){ let t=b; b=a%b; a=t; } return Math.abs(a); },
       lcm:   (a, b) => Math.abs(a*b) / (function gcdInner(x,y){ while(y){ const t=y; y=x%y; x=t; } return Math.abs(x); })(a,b),
+      nthroot: (n, x) => Math.pow(x, 1 / n), // n-th root: nthroot(3, 8) = ∛8 = 2
       max:   (...a) => Math.max(...a),
       min:   (...a) => Math.min(...a),
     };
@@ -143,6 +146,7 @@ function buildMathScope(ev) {
     mod:     ev.mod,
     gcd:     ev.gcd,
     lcm:     ev.lcm,
+    nthroot: ev.nthroot,
     max:     ev.max,
     min:     ev.min,
     pi:      Math.PI,

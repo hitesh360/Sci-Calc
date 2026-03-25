@@ -27,7 +27,7 @@ export default function GraphEngine({ expr: initialExpr }) {
   }, []);
 
   const evalY = useCallback((xVal, expression) => {
-    const { value, isError } = evaluate(expression.replace(/x/g, `(${xVal})`));
+    const { value, isError } = evaluate(expression.replace(/\bx\b/g, `(${xVal})`));
     return isError ? null : value;
   }, []);
 
